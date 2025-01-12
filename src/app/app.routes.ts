@@ -6,12 +6,14 @@ import { AdminComponent } from '../pages/admin/admin/admin.component';
 import { authGuard } from '../core/guards/auth.guard';
 import { CustomerComponent } from '../pages/customer/customer/customer.component';
 import { Role } from '../core/services/auth/auth.interface';
+import { RegisterComponent } from '../pages/register/register/register.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Default route
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'admin', component: AdminComponent, canActivate: [authGuard], data: { roles: [Role.ADMIN] } },
-  { path: 'customer', component: CustomerComponent, canActivate: [authGuard], data: { roles: [Role.CUSTOMER] } },
+  { path: 'customer', component: CustomerComponent, canActivate: [authGuard], data: { roles: [Role.USER] } },
   { path: '**', component: PageNotFoundComponent }, // Wildcard route
 ];

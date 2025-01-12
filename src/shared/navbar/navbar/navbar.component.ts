@@ -19,7 +19,7 @@ export class NavbarComponent {
   userRole = () => this.auth.userRole();
 
   isAdmin = () => this.auth.hasRequiredRole([Role.ADMIN]);
-  isCustomer = () => this.auth.hasRequiredRole([Role.CUSTOMER]);
+  isCustomer = () => this.auth.hasRequiredRole([Role.USER]);
 
   logout() {
     this.auth.logout();

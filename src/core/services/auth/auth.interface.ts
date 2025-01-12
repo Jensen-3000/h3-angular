@@ -16,5 +16,5 @@ export interface DecodedToken {
 
 export enum Role {
   ADMIN = 'admin',
-  CUSTOMER = 'customer',
+  USER = 'user',
 }

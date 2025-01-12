@@ -10,7 +10,8 @@ import { TokenService } from '../token/token.service';
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly apiUrl = `${environment.apiBaseUrl}/auth/login`;
+  private readonly loginApiUrl = `${environment.apiBaseUrl}/auth/login`;
+  private readonly registerApiUrl = `${environment.apiBaseUrl}/users/register`;
 
   // Who needs Angular DI when you have the `inject` function?
   private http = inject(HttpClient);
@@ -28,8 +29,12 @@ export class AuthService {
 
   login(username: string, password: string) {
     return this.http
-      .post<LoginResponse>(this.apiUrl, { username, password })
+      .post<LoginResponse>(this.loginApiUrl, { username, password })
       .pipe(tap((response) => this.tokenStorage.setToken(response.token)));
+  }
+
+  register(username: string, password: string, userRoleId: number, email?: string) {
+    return this.http.post(this.registerApiUrl, { username, password, userRoleId, email });
   }
 
   logout(): void {

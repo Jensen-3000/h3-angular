@@ -5,7 +5,14 @@
       <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
     </span>
 
-    <!-- Auth Section -->
+    <!-- Register -->
+    <span>
+      @if(!isLoggedIn()) {
+      <a mat-button routerLink="/register" routerLinkActive="active">Register</a>
+      }
+    </span>
+
+    <!-- Login -->
     <span>
       @if (isLoggedIn()) {
       <span class="user-info"> {{ username() }} ({{ userRole() }}) </span>
