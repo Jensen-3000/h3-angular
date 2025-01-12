@@ -39,11 +39,11 @@ ng add @angular/material
 
 ## Opret Environment Filer
 
-Guiden til [Angular Environments](https://angular.dev/tools/cli/environments#) aka kør:
-
 ```sh
 ng generate environments
 ```
+
+[AngularDocs: Environments](https://angular.dev/tools/cli/environments#)
 
 ## Components
 
@@ -76,3 +76,23 @@ ng generate c pages/login/login
 ```sh
 ng g c pages/page-not-found/page-not-found
 ```
+
+### Guard
+
+```sh
+ng g g core/guards/auth
+```
+
+### Interceptor
+
+```sh
+ng g interceptor core/interceptors/auth
+```
+
+[YouTube: Short Interceptor](https://www.youtube.com/watch?v=I27bRQC5gEY)
+
+[AngularDocs: Inject](https://angular.dev/guide/di/dependency-injection-context)
+
+[AngularDocs: Signals](https://angular.dev/guide/signals)
+
+[AngularDocs: Routes](https://angular.dev/guide/routing/common-router-tasks)

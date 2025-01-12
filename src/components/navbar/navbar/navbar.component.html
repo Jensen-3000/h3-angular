@@ -1,11 +1,28 @@
 <mat-toolbar>
-  <span>
-    <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+  <nav>
+    <!-- Main Navigation -->
+    <span>
+      <a mat-button routerLink="/home" routerLinkActive="active">Home</a>
+    </span>
 
-    @if (isLoggedIn) {
-    <a mat-button (click)="logout()">Logout</a>
-    } @else {
-    <a mat-button routerLink="/login" routerLinkActive="active" (click)="login()">Login</a>
-    }
-  </span>
+    <!-- Auth Section -->
+    <span>
+      @if (isLoggedIn()) {
+      <span class="user-info"> {{ username() }} ({{ userRole() }}) </span>
+      <a mat-button (click)="logout()">Logout</a>
+
+      } @else {
+      <a mat-button routerLink="/login" routerLinkActive="active">Login</a>
+      }
+    </span>
+
+    <!-- Role-based Navigation -->
+    <span>
+      @if (isLoggedIn() && isAdmin()) {
+      <a mat-button routerLink="/admin" routerLinkActive="active">Admin</a>
+      } @if (isLoggedIn() && isCustomer()) {
+      <a mat-button routerLink="/customer" routerLinkActive="active">Customer</a>
+      }
+    </span>
+  </nav>
 </mat-toolbar>

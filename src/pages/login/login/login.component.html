@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="login-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-label>Username</mat-label>
+          <input matInput [formControlName]="formControls.Username" required />
+
+          @if (loginForm.get(formControls.Username)?.hasError('required')) {
+          <mat-error> Username is required </mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Password</mat-label>
+          <input matInput type="password" [formControlName]="formControls.Password" required />
+
+          @if (loginForm.get(formControls.Password)?.hasError('required')) {
+          <mat-error> Password is required </mat-error>
+          }
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" [disabled]="loginForm.invalid || loading">
+          @if (loading) {
+          <mat-spinner diameter="20"></mat-spinner>
+          } @else {
+          <span>Login</span>
+          }
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

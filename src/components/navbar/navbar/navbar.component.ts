@@ -1,24 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../../core/services/auth/auth.service';
+import { Role } from '../../../core/services/auth/auth.interface';
 
 @Component({
   selector: 'app-navbar',
   imports: [MatToolbarModule, MatButtonModule, RouterLink, RouterLinkActive],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  isLoggedIn = false;
+  protected auth = inject(AuthService);
 
-  login() {
-    this.isLoggedIn = true;
-    console.log('Logged in');
-  }
+  isLoggedIn = this.auth.isLoggedIn;
+
+  username = () => this.auth.username();
+  userRole = () => this.auth.userRole();
+
+  isAdmin = () => this.auth.hasRequiredRole([Role.ADMIN]);
+  isCustomer = () => this.auth.hasRequiredRole([Role.CUSTOMER]);
 
   logout() {
-    this.isLoggedIn = false;
-    console.log('Logged out');
+    this.auth.logout();
   }
 }
