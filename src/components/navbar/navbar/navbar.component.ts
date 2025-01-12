@@ -9,4 +9,16 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+  isLoggedIn = false;
+
+  login() {
+    this.isLoggedIn = true;
+    console.log('Logged in');
+  }
+
+  logout() {
+    this.isLoggedIn = false;
+    console.log('Logged out');
+  }
+}
