@@ -1,5 +1,9 @@
 # Angular Udviklingsguide
 
+## Extensions
+
+Tilføj `Angular Essentials` fra John Papa til vs code
+
 ## Fjern Spec test Filer
 
 Update til `angular.json` for at undgå .spec / test filer blive genereret:
