@@ -1,1 +1,13 @@
-<p>home works!</p>
+<div class="movie-grid">
+  @for (movie of movies(); track movie.id) {
+  <a [routerLink]="['/movie', movie.id]" class="movie-link">
+    <mat-card class="movie-card">
+      <img mat-card-image [src]="movie.imageUrl" [alt]="movie.title" />
+      <mat-card-content>
+        <h2>{{ movie.title }}</h2>
+        <p>{{ movie.genres }}</p>
+      </mat-card-content>
+    </mat-card>
+  </a>
+  }
+</div>
