@@ -1,0 +1,47 @@
+@if (movie) {
+<div class="movie-detail-container">
+  <mat-card class="movie-card">
+    <img mat-card-image [src]="movie.imageUrl" [alt]="movie.title" />
+    <mat-card-content>
+      <h1>{{ movie.title }}</h1>
+      <p class="genre">{{ genres }}</p>
+      <p class="description">{{ movie.description }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="cinema-card">
+    <mat-card-header>
+      <mat-card-title>Select Cinema & Time</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Cinema selection -->
+      <div class="cinema-selection">
+        @for (cinema of cinemas; track cinema.name) {
+        <button mat-button [class.selected]="selectedCinemaName === cinema.name" (click)="selectCinema(cinema.name)">
+          {{ cinema.name }}
+        </button>
+        }
+      </div>
+      <!-- Screening times -->
+      @if (selectedCinemaName && screeningsForSelectedCinema?.length) {
+      <div class="screening-times">
+        @for (screening of screeningsForSelectedCinema; track screening.id) {
+        <button
+          mat-button
+          [class.selected]="selectedScreening?.id === screening.id"
+          (click)="selectScreening(screening)"
+        >
+          {{ screening.startTime | date : "short" }}
+        </button>
+        }
+      </div>
+      }
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Show seat selection when screening is selected -->
+  @if (selectedScreening) {
+  <app-seat-selection [screeningId]="selectedScreening.id"></app-seat-selection>
+  }
+</div>
+}

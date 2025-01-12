@@ -1,0 +1,16 @@
+@if (screeningDetails(); as details) {
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Select Seats - {{ details.screenName }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="seat-grid">
+      @for (seat of details.seatAvailabilities; track seat.seatId) {
+      <button mat-button [class.available]="seat.isAvailable" [disabled]="!seat.isAvailable" (click)="toggleSeat(seat)">
+        {{ seat.seatId }}
+      </button>
+      }
+    </div>
+  </mat-card-content>
+</mat-card>
+}

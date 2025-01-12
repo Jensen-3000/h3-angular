@@ -4,7 +4,8 @@ export enum Endpoints {
   Tickets = 'tickets',
   Genres = 'genres',
   Movies = 'movies',
-  Cinemas = 'cinema',
+  Cinemas = 'cinemas',
   Seats = 'seats',
   UserRoles = 'userroles',
+  Screenings = 'screenings',
 }
