@@ -15,6 +15,6 @@ export class HomeComponent {
   movies = signal<Movie[]>([]);
 
   ngOnInit(): void {
-    this.movieService.getAll<Movie>().subscribe((m) => this.movies.set(m()));
+    this.movieService.getAll().subscribe((movies) => this.movies.set(movies));
   }
 }

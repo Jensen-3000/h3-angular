@@ -1,16 +1,16 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ScreeningDetails } from '../../models/movie';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment.development';
+import { CrudService } from '../crud/crud.service';
+import { Endpoints } from '../../models/endpoints.enum';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ScreeningService {
-  private baseUrl = environment.apiBaseUrl;
-
-  http = inject(HttpClient);
+export class ScreeningService extends CrudService<ScreeningDetails> {
+  constructor() {
+    super(Endpoints.Screenings);
+  }
 
   getScreeningDetails(id: number): Observable<ScreeningDetails> {
     return this.http.get<ScreeningDetails>(`${this.baseUrl}/Screenings/${id}`);

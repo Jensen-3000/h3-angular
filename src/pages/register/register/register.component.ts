@@ -28,7 +28,7 @@ import { UserRoleService } from '../../../core/services/user-role.service';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
   loading = false;
   readonly formControls = RegisterFormControls;
   userRoles: UserRole[] = [];
@@ -47,11 +47,11 @@ export class RegisterComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.userRoleService.getAll<UserRole>().subscribe((roles) => {
-      if (roles()) {
-        this.userRoles = roles();
-        // Set a default value to the first role, this will prevent an error
-        this.registerForm.get(this.formControls.Role)?.setValue(this.userRoles[0].id);
+    this.userRoleService.getAll().subscribe((roles) => {
+      this.userRoles = roles;
+      // Set a default value to the first role
+      if (roles.length > 0) {
+        this.registerForm.get(this.formControls.Role)?.setValue(roles[0].id);
       }
     });
   }

@@ -7,7 +7,7 @@ import { Movie } from '../../models/movie';
 @Injectable({
   providedIn: 'root',
 })
-export class MovieService extends CrudService {
+export class MovieService extends CrudService<Movie> {
   constructor() {
     super(Endpoints.Movies);
   }

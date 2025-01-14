@@ -7,7 +7,7 @@ import { authGuard } from '../core/guards/auth.guard';
 import { CustomerComponent } from '../pages/customer/customer/customer.component';
 import { Role } from '../core/services/auth/auth.interface';
 import { RegisterComponent } from '../pages/register/register/register.component';
-import { MovieDetailComponent } from '../pages/movie-detail/movie-detail/movie-detail.component';
+import { MovieDetailComponent } from '../pages/movie-detail/movie-detail.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' }, // Default route
