@@ -27,7 +27,7 @@
     <span>
       @if (isLoggedIn() && isAdmin()) {
       <a mat-button routerLink="/admin" routerLinkActive="active">Admin</a>
-      } @if (isLoggedIn() && isCustomer()) {
+      } @if (isLoggedIn() && isUser()) {
       <a mat-button routerLink="/customer" routerLinkActive="active">Customer</a>
       }
     </span>
