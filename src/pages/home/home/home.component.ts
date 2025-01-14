@@ -1,5 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
-import { Movie } from '../../../core/models/movie';
+import { MovieDetailed } from '../../../core/models/movie.model';
 import { MovieService } from '../../../core/services/movie/movie.service';
 import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -12,7 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class HomeComponent {
   private movieService = inject(MovieService);
-  movies = signal<Movie[]>([]);
+  movies = signal<MovieDetailed[]>([]);
 
   ngOnInit(): void {
     this.movieService.getAll().subscribe((movies) => this.movies.set(movies));

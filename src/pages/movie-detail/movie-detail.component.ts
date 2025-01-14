@@ -1,7 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Movie, Screening } from '../../core/models/movie';
+import { MovieDetailed, MovieSimple } from '../../core/models/movie.model';
+import { ScreeningSimple } from '../../core/models/screening.model';
 import { MovieService } from '../../core/services/movie/movie.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -19,10 +20,10 @@ export class MovieDetailComponent {
   private route = inject(ActivatedRoute);
   private movieService = inject(MovieService);
 
-  movie: Movie | null = null;
+  movie: MovieDetailed | null = null;
   error: string | null = null;
   selectedCinemaName: string | null = null;
-  selectedScreening: Screening | null = null;
+  selectedScreening: ScreeningSimple | null = null;
 
   get screeningsForSelectedCinema() {
     return this.movie?.screenings.filter((s) => s.cinemaName === this.selectedCinemaName);
@@ -44,7 +45,7 @@ export class MovieDetailComponent {
     if (!movieId) return;
 
     this.movieService
-      .getMovie(movieId)
+      .getDetailedById(movieId)
       .pipe(
         catchError(() => {
           this.error = 'Failed to load movie';
@@ -58,7 +59,7 @@ export class MovieDetailComponent {
     this.selectedCinemaName = name;
   }
 
-  selectScreening(screening: Screening): void {
+  selectScreening(screening: ScreeningSimple): void {
     this.selectedScreening = screening;
   }
 }

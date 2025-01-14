@@ -1,5 +1,6 @@
 import { Component, inject, Input, signal } from '@angular/core';
-import { ScreeningDetails, SeatAvailability } from '../../../core/models/movie';
+import { ScreeningAvailableSeats } from '../../../core/models/screening.model';
+import { SeatAvailability } from '../../../core/models/seat-availability.model';
 import { ScreeningService } from '../../../core/services/screening/screening.service';
 import { MatCardModule } from '@angular/material/card';
 
@@ -13,7 +14,7 @@ export class SeatSelectionComponent {
   @Input() screeningId!: number;
   private screeningService = inject(ScreeningService);
 
-  screeningDetails = signal<ScreeningDetails | null>(null);
+  screeningDetails = signal<ScreeningAvailableSeats | null>(null);
 
   ngOnInit() {
     this.loadScreeningDetails();

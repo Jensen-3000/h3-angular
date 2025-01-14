@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ScreeningDetails } from '../../models/movie';
+import { ScreeningAvailableSeats } from '../../models/screening.model';
 import { CrudService } from '../crud/crud.service';
-import { Endpoints } from '../../models/endpoints.enum';
+import { Endpoints } from '../../enums/endpoints.enum';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ScreeningService extends CrudService<ScreeningDetails> {
+export class ScreeningService extends CrudService<ScreeningAvailableSeats> {
   constructor() {
     super(Endpoints.Screenings);
   }
 
-  getScreeningDetails(id: number): Observable<ScreeningDetails> {
-    return this.http.get<ScreeningDetails>(`${this.baseUrl}/Screenings/${id}`);
+  getScreeningDetails(id: number): Observable<ScreeningAvailableSeats> {
+    return this.http.get<ScreeningAvailableSeats>(`${this.baseUrl}/Screenings/${id}`);
   }
 
   toggleSeat(screeningId: number, seatId: number): Observable<void> {

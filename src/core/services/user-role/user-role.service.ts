@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { CrudService } from './crud/crud.service';
-import { Endpoints } from '../models/endpoints.enum';
-import { UserRole } from '../models/user-role.interface';
+import { Endpoints } from '../../enums/endpoints.enum';
+import { UserRole } from '../../models/user-role.model';
+import { CrudService } from '../crud/crud.service';
 
 @Injectable({
   providedIn: 'root',

@@ -9,9 +9,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RegisterFormControls } from '../register-form-controls.enum';
 import { AuthService } from '../../../core/services/auth/auth.service';
-import { UserRole } from '../../../core/models/user-role.interface';
+import { UserRole } from '../../../core/models/user-role.model';
 import { MatSelectModule } from '@angular/material/select';
-import { UserRoleService } from '../../../core/services/user-role.service';
+import { UserRoleService } from '../../../core/services/user-role/user-role.service';
 
 @Component({
   selector: 'app-register',

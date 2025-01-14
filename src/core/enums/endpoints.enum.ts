@@ -1,11 +1,11 @@
 export enum Endpoints {
   Auth = 'auth',
-  Users = 'users',
-  Tickets = 'tickets',
+  Cinemas = 'cinemas',
   Genres = 'genres',
   Movies = 'movies',
-  Cinemas = 'cinemas',
-  Seats = 'seats',
-  UserRoles = 'userroles',
   Screenings = 'screenings',
+  Seats = 'seats',
+  Tickets = 'tickets',
+  UserRoles = 'userroles',
+  Users = 'users',
 }

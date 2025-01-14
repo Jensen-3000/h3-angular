@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Endpoints } from '../../models/endpoints.enum';
+import { Endpoints } from '../../enums/endpoints.enum';
 
 export class CrudService<T> {
   protected baseUrl: string = environment.apiBaseUrl;
