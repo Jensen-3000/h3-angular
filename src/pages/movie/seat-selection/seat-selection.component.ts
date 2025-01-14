@@ -1,8 +1,8 @@
 import { Component, inject, Input, signal } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { ScreeningAvailableSeats } from '../../../core/models/screening.model';
 import { SeatAvailability } from '../../../core/models/seat-availability.model';
 import { ScreeningService } from '../../../core/services/screening/screening.service';
-import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-seat-selection',

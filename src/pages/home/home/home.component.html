@@ -2,9 +2,10 @@
   @for (movie of movies(); track movie.id) {
   <a [routerLink]="['/movie', movie.id]" class="movie-link">
     <mat-card class="movie-card">
-      <img mat-card-image [src]="movie.imageUrl" [alt]="movie.title" />
+      <img mat-card-image [src]="movie.imageUrl" />
+
       <mat-card-content>
-        <h2>{{ movie.title }}</h2>
+        <h2>{{ movie.name }}</h2>
         <p>{{ movie.genres }}</p>
       </mat-card-content>
     </mat-card>

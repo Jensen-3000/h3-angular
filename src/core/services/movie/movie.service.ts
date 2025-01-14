@@ -7,7 +7,7 @@ import { MovieCreate, MovieDetailed, MovieSimple, MovieUpdate } from '../../mode
 @Injectable({
   providedIn: 'root',
 })
-export class MovieService extends CrudService<MovieSimple> {
+export class MovieService extends CrudService<MovieDetailed> {
   constructor() {
     super(Endpoints.Movies);
   }
@@ -16,7 +16,7 @@ export class MovieService extends CrudService<MovieSimple> {
     return this.http.get<MovieDetailed>(`${this.baseUrl}/${this.endpoint}/${slug}`);
   }
 
-  getDetailedById(id: string): Observable<MovieDetailed> {
+  getDetailedById(id: number): Observable<MovieDetailed> {
     return this.http.get<MovieDetailed>(`${this.baseUrl}/${this.endpoint}/${id}`);
   }
 

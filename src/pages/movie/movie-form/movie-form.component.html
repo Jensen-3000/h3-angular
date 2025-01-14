@@ -1,0 +1,54 @@
+<div class="container">
+  <h2>@if (isEditMode) { Edit Movie } @else { Add New Movie }</h2>
+
+  <form [formGroup]="movieForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required />
+      @if (movieForm.get('name')?.hasError('required')) {
+      <mat-error>Name is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Image URL</mat-label>
+      <input matInput formControlName="imageUrl" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Slug</mat-label>
+      <input matInput formControlName="slug" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Duration (HH:mm:ss)</mat-label>
+      <input matInput formControlName="duration" required />
+      <mat-error *ngIf="movieForm.get('duration')?.hasError('pattern')">
+        Duration must be in the format HH:mm:ss and within 00:00:00 to 23:59:59
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Genres</mat-label>
+      <mat-select formControlName="genreIds" multiple>
+        @for (genre of genres; track genre.id) {
+        <mat-option [value]="genre.id">{{ genre.name }}</mat-option>
+        } @empty {
+        <mat-option disabled>No genres available</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <div class="button-group">
+      <button mat-raised-button color="primary" type="submit">
+        @if (isEditMode) { Update Movie } @else { Add Movie }
+      </button>
+      <button mat-button type="button" routerLink="/movies">Cancel</button>
+    </div>
+  </form>
+</div>

@@ -3,7 +3,7 @@ import { ScreeningSimple } from './screening.model';
 
 export interface MovieSimple {
   id: number;
-  title: string;
+  name: string;
   imageUrl: string;
   duration: string;
 }

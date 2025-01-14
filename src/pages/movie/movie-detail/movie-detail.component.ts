@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { MovieDetailed, MovieSimple } from '../../core/models/movie.model';
-import { ScreeningSimple } from '../../core/models/screening.model';
-import { MovieService } from '../../core/services/movie/movie.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { catchError } from 'rxjs';
-import { SeatSelectionComponent } from './seat-selection/seat-selection.component';
+import { SeatSelectionComponent } from '../seat-selection/seat-selection.component';
+import { MovieDetailed } from '../../../core/models/movie.model';
+import { ScreeningSimple } from '../../../core/models/screening.model';
+import { MovieService } from '../../../core/services/movie/movie.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -45,7 +45,7 @@ export class MovieDetailComponent {
     if (!movieId) return;
 
     this.movieService
-      .getDetailedById(movieId)
+      .getDetailedById(+movieId)
       .pipe(
         catchError(() => {
           this.error = 'Failed to load movie';
